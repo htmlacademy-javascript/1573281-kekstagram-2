@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Александр Белошапкин](https://up.htmlacademy.ru/javascript-individual/2/user/1573281).
-* Наставник: `Неизвестно`.
+* Наставник: [Виктория Никитина](https://htmlacademy.ru/profile/id1217273).
 
 ---
 
