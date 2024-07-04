@@ -23,6 +23,11 @@ const extractNumber = (string) => {
       resaultNumber += string[number] ;
     }
   }
-  return resaultNumber = parseInt(resaultNumber, 10);
+  resaultNumber = parseInt(resaultNumber, 10);
+  return resaultNumber;
 };
+
+checkStringLength('str', 4);
+polindrome('Анна');
+extractNumber('2024 год');
 
