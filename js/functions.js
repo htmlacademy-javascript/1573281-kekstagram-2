@@ -2,7 +2,7 @@
 const checkStringLength = (string, maxLength) => string.length <= maxLength;
 
 // Функция по опредлению, является ли строка полиндромом
-const polindrome = (string) => {
+const isPolindrome = (string) => {
   string = string.toLowerCase().replaceAll(' ', '');
   let oppositeString = '';
 
@@ -28,6 +28,6 @@ const extractNumber = (string) => {
 };
 
 checkStringLength('str', 4);
-polindrome('Анна');
+isPolindrome('Анна');
 extractNumber('2024 год');
 
