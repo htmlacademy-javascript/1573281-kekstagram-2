@@ -19,8 +19,6 @@ const COMMENTATORS = [
   'Захар'
 ];
 
-const OBJECTS_QUANTITY = 25;
-
 const DESCRIPTION = [
   'Ничего не обычного. Просто фото',
   'Фото хорошее, но чего-то не хватает',
@@ -28,6 +26,16 @@ const DESCRIPTION = [
   'Что тут вообще изображено?',
   'На любителя, если честно, я бы так не сделал'
 ];
+
+const OBJECTS_QUANTITY = 25;
+const MESSAGE_NUM_MIN = 1;
+const MESSAGE_NUM_MAX = 2;
+const COMMENTS_NUM_MIN = 0;
+const COMMENTS_NUM_MAX = 30;
+const COMMENT_MESSAGE_MIN = 1;
+const COMMENT_MESSAGE_MAX = 2;
+const LIKE_NUM_MIN = 15;
+const LIKE_NUM_MAX = 200;
 
 let photoId = 1;
 let commentsId = 1;
@@ -43,21 +51,21 @@ const getRandomInteger = (a, b) => {
 
 // Функция получения случайного элемента массива
 
-const getRandomArrayElement = (array) => array[getRandomInteger(0, array.length - 1)];
+const getRandomArrayElement = (dataArray) => dataArray[getRandomInteger(0, dataArray.length - 1)];
 
 
 // Функция получения текста комментария (одно или два случайных предложения)
 
 const createMessage = () => {
-  const message = Array.from({length: getRandomInteger(1, 2)}, () => getRandomArrayElement(COMMENTS));
+  const message = Array.from({length: getRandomInteger(MESSAGE_NUM_MIN, MESSAGE_NUM_MAX)}, () => getRandomArrayElement(COMMENTS));
   return Array.from(new Set(message)).join(' ');
 };
 
 // Функция создает массив объектов комментариев
 
 const createComments = () => ({
-  id: commentsId++, // Решение рабочее, но грязное
-  avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
+  id: commentsId++,
+  avatar: `img/avatar-${getRandomInteger(COMMENT_MESSAGE_MIN, COMMENT_MESSAGE_MAX)}.svg`,
   message:  createMessage(),
   name: getRandomArrayElement(COMMENTATORS)
 });
@@ -68,8 +76,8 @@ const createPhoto = () => ({
   id: photoId,
   url: `photos/${photoId++}.jpg`,
   description:  getRandomArrayElement(DESCRIPTION),
-  likes: getRandomInteger(15, 200),
-  comments: Array.from({length: getRandomInteger(0, 30)}, createComments)
+  likes: getRandomInteger(LIKE_NUM_MIN, LIKE_NUM_MAX),
+  comments: Array.from({length: getRandomInteger(COMMENTS_NUM_MIN, COMMENTS_NUM_MAX)}, createComments)
 });
 
 // Функция формирования массива определенного количества объектов
