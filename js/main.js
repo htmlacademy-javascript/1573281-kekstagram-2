@@ -1,4 +1,3 @@
-import { similarPhotos } from './create-data';
+import { getImagesArray } from './create-images-array.js';
 
-similarPhotos();
-
+getImagesArray();
