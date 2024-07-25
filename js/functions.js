@@ -32,13 +32,12 @@ isPolindrome('Анна');
 extractNumber('2024 год');
 
 
+//Функция из модуля 5
 const getMinutes = (dataString) => {
   const time = dataString.split(':');
   return Number(time[0]) * 60 + Number(time[1]);
 };
 
-
-//Функция из модуля 5
 const checkMeetingTime = (start, end, meeting, duration) => getMinutes(meeting) >= getMinutes(start) && (getMinutes(meeting) + duration) <= getMinutes(end);
 
 checkMeetingTime('08:00', '17:30', '14:00', 90); // true
