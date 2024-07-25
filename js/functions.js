@@ -31,3 +31,18 @@ checkStringLength('str', 4);
 isPolindrome('Анна');
 extractNumber('2024 год');
 
+
+//Функция из модуля 5
+const getMinutes = (dataString) => {
+  const time = dataString.split(':');
+  return Number(time[0]) * 60 + Number(time[1]);
+};
+
+const checkMeetingTime = (start, end, meeting, duration) => getMinutes(meeting) >= getMinutes(start) && (getMinutes(meeting) + duration) <= getMinutes(end);
+
+checkMeetingTime('08:00', '17:30', '14:00', 90); // true
+checkMeetingTime('8:0', '10:0', '8:0', 120); // true
+checkMeetingTime('08:00', '14:30', '14:00', 90); // false
+checkMeetingTime('14:00', '17:30', '08:0', 90); // false
+checkMeetingTime('8:00', '17:30', '08:00', 900); // false
+
