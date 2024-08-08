@@ -1,3 +1,4 @@
-import { getImagesArray } from './create-images-array.js';
+import { renderPhotos } from './thumbnails';
 
-getImagesArray();
+renderPhotos();
+
