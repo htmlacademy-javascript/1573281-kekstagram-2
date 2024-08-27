@@ -7,8 +7,11 @@ const getRandomInteger = (a, b) => {
   return Math.floor(result);
 };
 
-// Функция получения случайного элемента массива
 
-const getRandomArrayElement = (dataArray) => dataArray[getRandomInteger(0, dataArray.length - 1)];
+const getRandomArrayElement = (dataArray) => dataArray[getRandomInteger(0, dataArray.length - 1)]; // Функция получения случайного элемента массива
 
-export {getRandomInteger, getRandomArrayElement};
+const isEscapeKey = (evt) => evt.key === 'Escape'; // Функия проверки нажатия escape в обработчике события
+
+export {getRandomInteger, getRandomArrayElement, isEscapeKey};
+
+
