@@ -40,7 +40,7 @@ const openBigPicture = (pictureId, data) => {
     socailComment.querySelector('.social__text').textContent = comment.message;
     socialCommentsFragment.appendChild(socailComment);
   });
-  commentsCount.appendChild(socialCommentsFragment);
+  socailComments.appendChild(socialCommentsFragment);
   commentsCaption.textContent = currentPhoto.description;
 
   commentsCount.classList.add('hidden');
