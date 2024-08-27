@@ -41,6 +41,5 @@ const createImagesArray = () => ({
   comments: Array.from({length: getRandomInteger(COMMENTS_NUM_MIN, COMMENTS_NUM_MAX)}, createComments)
 });
 
-const getImagesArray = () => Array.from({length: OBJECTS_QUANTITY}, createImagesArray);
-
+const getImagesArray = Array.from({length: OBJECTS_QUANTITY}, createImagesArray);
 export {getImagesArray};
