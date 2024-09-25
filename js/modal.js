@@ -1,4 +1,5 @@
 import {isEscapeKey} from './utils.js';
+import {commentsLoad} from './comments-loader.js';
 
 const picturesList = document.querySelector('.pictures'); // Блок, куда всталяются миниатюры
 const bigPictureContainer = document.querySelector('.big-picture'); // контейнер модального окна
@@ -8,8 +9,7 @@ const bigPictureImg = bigPictureContainer.querySelector('.big-picture__img').que
 const likesCount = bigPictureContainer.querySelector('.likes-count'); // указыавется количество лайков
 const socailComments = bigPictureContainer.querySelector('.social__comments'); // блок, внутри которого содержатся все комментарии (ul)
 const socialCommentTemplate = socailComments.querySelector('.social__comment'); // блок, в котором содержится один комментарий (li)
-const commentsCount = bigPictureContainer.querySelector('.social__comment-count'); // div, внутри которого есть спан с кол-м комментов
-const commentsLoadert = bigPictureContainer.querySelector('.social__comments-loader'); // кнопка подгрузки комметарии
+
 
 const closeBigPicture = () => {
   bigPictureContainer.classList.add('hidden');
@@ -40,11 +40,9 @@ const openBigPicture = (pictureId, data) => {
     socailComment.querySelector('.social__text').textContent = comment.message;
     socialCommentsFragment.appendChild(socailComment);
   });
-  socailComments.appendChild(socialCommentsFragment);
   commentsCaption.textContent = currentPhoto.description;
-
-  commentsCount.classList.add('hidden');
-  commentsLoadert.classList.add('hidden');
+  socailComments.appendChild(socialCommentsFragment);
+  commentsLoad();
   bigPictureContainer.classList.remove('hidden');
   document.body.classList.add('modal-open');
 

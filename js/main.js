@@ -5,4 +5,3 @@ import { openModal } from './modal.js';
 renderPhotos(getImagesArray);
 openModal(getImagesArray);
 
-
