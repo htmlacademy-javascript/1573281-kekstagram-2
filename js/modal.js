@@ -1,5 +1,5 @@
 import {isEscapeKey} from './utils.js';
-import {commentsLoad} from './comments-loader.js';
+import {commentsLoader} from './comments-loader.js';
 
 const picturesList = document.querySelector('.pictures'); // Блок, куда всталяются миниатюры
 const bigPictureContainer = document.querySelector('.big-picture'); // контейнер модального окна
@@ -42,7 +42,7 @@ const openBigPicture = (pictureId, data) => {
   });
   commentsCaption.textContent = currentPhoto.description;
   socailComments.appendChild(socialCommentsFragment);
-  commentsLoad();
+  commentsLoader();
   bigPictureContainer.classList.remove('hidden');
   document.body.classList.add('modal-open');
 

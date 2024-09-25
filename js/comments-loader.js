@@ -1,44 +1,38 @@
-const commentsLoad = () => {
-  const commentsList = document.querySelector('.social__comments'); // ul, внутри которого все комментарии
-  const commentsLoader = document.querySelector('.comments-loader'); // кнопка "загрузить еще"
-  const totalComments = commentsList.children.length; // сколько всего комментариев
-  const commentsToShow = 5; // сколько показывать
+const commentsLoader = () => {
+  const commentsList = document.querySelector('.social__comments');
+  const commentsLoaderButton = document.querySelector('.comments-loader');
+  const commentsTotalCount = document.querySelector('.social__comment-total-count');
+  const commentsShowCount = document.querySelector('.social__comment-shown-count');
+  const totalComments = commentsList.children.length;
+  const commentsToShow = 5;
   let currentIndex = 0;
 
 
   // Функция для отображения следующей порции комментариев
-  function showNextComments() {
-    const commentsTotalCount = document.querySelector('.social__comment-total-count');
-    const commentsShowCount = document.querySelector('.social__comment-shown-count');
+  const showNextComments = () => {
     const comments = commentsList.children;
     const endIndex = Math.min(currentIndex + commentsToShow, totalComments);
-    commentsLoader.style.display = 'block';
-    commentsTotalCount.textContent = totalComments; // показываем общее количество комментариев
+    commentsLoaderButton.style.display = 'block';
+    commentsTotalCount.textContent = totalComments;
     for (let i = currentIndex; i < endIndex; i++) {
-      comments[i].style.display = 'flex'; // или 'block', если это блоковые элементы
+      comments[i].style.display = 'flex';
     }
-
     currentIndex = endIndex;
     commentsShowCount.textContent = currentIndex;
     // Если все комментарии показаны, скрыть кнопку
     if (currentIndex >= totalComments) {
-      commentsLoader.style.display = 'none';
+      commentsLoaderButton.style.display = 'none';
     }
-  }
-
+  };
   // Изначально показываем первые комментарии
   Array.from(commentsList.children).forEach((comment, index) => {
     if (index >= commentsToShow) {
-      comment.style.display = 'none'; // Скрыть все комментарии кроме первых 5
+      comment.style.display = 'none';
     }
   });
-
-  // Добавляем обработчик клика на кнопку
-  commentsLoader.addEventListener('click', showNextComments);
-
-  // Показываем первую порцию комментариев
+  commentsLoaderButton.addEventListener('click', showNextComments);
   showNextComments();
 };
 
-export {commentsLoad};
+export {commentsLoader};
 
