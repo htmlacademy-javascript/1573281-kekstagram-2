@@ -1,7 +1,11 @@
 import { renderPhotos } from './thumbnails.js';
 import { getImagesArray } from './create-images-array.js';
-import { openModal } from './modal.js';
+import { init as initModal } from './modal.js';
+import {initFormAction} from './upload/form.js';
+
 
 renderPhotos(getImagesArray);
-openModal(getImagesArray);
+initModal(getImagesArray);
+initFormAction();
+
 
