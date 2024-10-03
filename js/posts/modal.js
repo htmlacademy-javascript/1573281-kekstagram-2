@@ -1,4 +1,4 @@
-import { isEscapeKey } from './utils.js';
+import { isEscapeKey } from '../utils/utils.js';
 
 const picturesList = document.querySelector('.pictures'); // Блок, куда всталяются миниатюры
 const bigPictureContainer = document.querySelector('.big-picture'); // контейнер модального окна
@@ -97,8 +97,11 @@ commentsLoaderButton.addEventListener('click', () => {
 const init = (dataArr) => {
   picturesList.addEventListener('click', (evt) => {
     const currentPicture = evt.target.closest('.picture');
-    const currentPhoto = dataArr.find((photo) => photo.id === Number(currentPicture.dataset.pictureId));
-    openBigPicture(currentPhoto);
+    if(currentPicture) {
+      const currentPhoto = dataArr.find((photo) => photo.id === Number(currentPicture.dataset.pictureId));
+      openBigPicture(currentPhoto);
+    }
+
   });
 };
 
