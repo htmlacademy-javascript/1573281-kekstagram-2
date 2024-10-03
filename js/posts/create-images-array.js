@@ -1,5 +1,5 @@
 import { getDataImagesArray } from './data.js';
-import {getRandomInteger, getRandomArrayElement} from './utils.js';
+import {getRandomInteger, getRandomArrayElement} from '../utils/utils.js';
 
 const {COMMENTS, COMMENTATORS, DESCRIPTION } = getDataImagesArray();
 const OBJECTS_QUANTITY = 25;
