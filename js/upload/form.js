@@ -1,6 +1,6 @@
 import {isEscapeKey} from '../utils/utils.js';
 import {validatePristine, setPristine, resetPristine} from './validate.js';
-import {setPhotoScale, resetPhotoScale} from './scale.js';
+import {resetPhotoScale} from './scale.js';
 import {createSlider, updateSliderOptions} from './effect.js';
 
 const uploadInput = document.querySelector('.img-upload__input');
@@ -57,7 +57,6 @@ function effectsControlChangeHandler(evt) {
 
 const initFormAction = () => {
   setPristine();
-  setPhotoScale();
   createSlider(checkedEffect.value);
   uploadInput.addEventListener('change', uploadInputChangeHandler);
   form.addEventListener('submit', formSubmitHandler);

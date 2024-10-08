@@ -1,36 +1,37 @@
 const MIN_SCALE = 25;
 const MAX_SCALE = 100;
 const SCALE_STEP = 25;
-const DEFAULT_VALUE = 100;
-const PERCENT = 100;
+const DEFAULT_VALUE = MAX_SCALE;
+const PERCENT = 0.01;
 
 const buttonZoomOut = document.querySelector('.scale__control--smaller');
 const buttonZoomIn = document.querySelector('.scale__control--bigger');
 const previewPhoto = document.querySelector('.img-upload__preview img');
 const controlInput = document.querySelector('.scale__control--value');
 
-const getInputValue = () => parseInt(controlInput.value, 10);
+let currentScale = DEFAULT_VALUE;
 
-const updateScale = (value) => {
-  previewPhoto.style.transform = `scale(${value / PERCENT})`;
-  controlInput.value = `${value}%`;
+const updateScale = () => {
+  previewPhoto.style.transform = `scale(${currentScale * PERCENT})`;
+  controlInput.value = `${currentScale}%`;
 };
 
-function buttonZoomOutClickHandler() {
-  const stepBack = Math.max(getInputValue() - SCALE_STEP, MIN_SCALE);
-  updateScale(stepBack);
-}
-
-function buttonZoomInClickHandler() {
-  const stepForward = Math.min(getInputValue() + SCALE_STEP, MAX_SCALE);
-  updateScale(stepForward);
-}
-
-const setPhotoScale = () => {
-  buttonZoomOut.addEventListener('click', buttonZoomOutClickHandler);
-  buttonZoomIn.addEventListener('click', buttonZoomInClickHandler);
+const buttonZoomOutClickHandler = () => {
+  currentScale = Math.max(currentScale - SCALE_STEP, MIN_SCALE);
+  updateScale();
 };
 
-const resetPhotoScale = () => updateScale(DEFAULT_VALUE);
+const buttonZoomInClickHandler = () => {
+  currentScale = Math.min(currentScale + SCALE_STEP, MAX_SCALE);
+  updateScale();
+};
 
-export {setPhotoScale, resetPhotoScale};
+buttonZoomOut.addEventListener('click', buttonZoomOutClickHandler);
+buttonZoomIn.addEventListener('click', buttonZoomInClickHandler);
+
+const resetPhotoScale = () => {
+  currentScale = DEFAULT_VALUE;
+  updateScale();
+}
+
+export { resetPhotoScale };
