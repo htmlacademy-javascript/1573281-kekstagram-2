@@ -1,34 +1,17 @@
-const getDataImagesArray = () => {
-  const COMMENTS = [
-    'Всё отлично!',
-    'В целом всё неплохо. Но не всё.',
-    'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
-    'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
-    'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
-    'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
-  ];
+import {getData} from '../utils/api.js';
+import {renderPhotos} from './thumbnails.js';
+import {init as initModal} from './modal.js';
+import {renderError} from '../utils/alerts.js';
 
-  const COMMENTATORS = [
-    'Иван',
-    'Сергей',
-    'Ирина',
-    'Владимир',
-    'Виктория',
-    'Николай',
-    'Альберт',
-    'Снежана',
-    'Захар'
-  ];
+const dataError = document.querySelector('#data-error').content.querySelector('.data-error');
 
-  const DESCRIPTION = [
-    'Ничего не обычного. Просто фото',
-    'Фото хорошее, но чего-то не хватает',
-    'Однозначно лайк и репост',
-    'Что тут вообще изображено?',
-    'На любителя, если честно, я бы так не сделал'
-  ];
-
-  return {COMMENTS, COMMENTATORS, DESCRIPTION};
+const uploadPosts = (data) => {
+  renderPhotos(data);
+  initModal(data);
 };
 
-export { getDataImagesArray };
+const showError = () => renderError(dataError);
+
+const initPosts = () => getData(uploadPosts, showError);
+
+export {initPosts};

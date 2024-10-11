@@ -32,6 +32,6 @@ buttonZoomIn.addEventListener('click', buttonZoomInClickHandler);
 const resetPhotoScale = () => {
   currentScale = DEFAULT_VALUE;
   updateScale();
-}
+};
 
 export { resetPhotoScale };
