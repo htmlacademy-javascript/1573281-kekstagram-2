@@ -1,4 +1,4 @@
-const EFFECTS = {
+export const EFFECTS = {
   chrome: {
     filter: 'grayscale',
     range: {
@@ -59,6 +59,3 @@ const EFFECTS = {
   },
 };
 
-const effects = () => EFFECTS;
-
-export {effects};

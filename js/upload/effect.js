@@ -1,19 +1,19 @@
-import { effects } from '../constans/constans.js';
+import { EFFECTS } from '../constants/constants.js';
 
 const previewPhoto = document.querySelector('.img-upload__preview img');
 const sliderContainer = document.querySelector('.img-upload__effect-level');
 const sliderInput = document.querySelector('.effect-level__value');
 const slider = document.querySelector('.effect-level__slider');
 
-const setSliderEffect = (value) => effects()[value] || effects().default;
+const setSliderEffect = (value) => EFFECTS[value] || EFFECTS.default;
 
-const setSliderStatus = (effect) => sliderContainer.classList.toggle('hidden', effect === effects().default);
+const setSliderStatus = (effect) => sliderContainer.classList.toggle('hidden', effect === EFFECTS.default);
 
 const updateSlider = (effect) => {
   slider.noUiSlider.off();
   slider.noUiSlider.on('update', () => {
     sliderInput.value = +slider.noUiSlider.get();
-    previewPhoto.style.filter = (effect === effects().default)
+    previewPhoto.style.filter = (effect === EFFECTS.default)
       ? null : `${effect.filter}(${sliderInput.value}${effect.unit})`;
   });
 };
