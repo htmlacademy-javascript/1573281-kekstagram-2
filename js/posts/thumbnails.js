@@ -1,6 +1,6 @@
-const usersPictureTepmplate = document.querySelector('#picture').content.querySelector('.picture'); // Шаблон отображения данных
-const picturesList = document.querySelector('.pictures'); // Блок, куда будут вставляться данные
-const picturesListFragment = document.createDocumentFragment(); // Сюда будут записываться шаблоны с заполненными данными
+const usersPictureTepmplate = document.querySelector('#picture').content.querySelector('.picture');
+const picturesList = document.querySelector('.pictures');
+const picturesListFragment = document.createDocumentFragment();
 
 const renderPhotos = (data) => {
   data.forEach(({id, url, description, likes, comments})=>{
