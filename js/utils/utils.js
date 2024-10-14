@@ -8,10 +8,26 @@ const getRandomInteger = (a, b) => {
 };
 
 
-const getRandomArrayElement = (dataArray) => dataArray[getRandomInteger(0, dataArray.length - 1)]; // Функция получения случайного элемента массива
+const getRandomArrayElement = (dataArray) => dataArray[getRandomInteger(0, dataArray.length - 1)];
+const isEscapeKey = (evt) => evt.key === 'Escape';
 
-const isEscapeKey = (evt) => evt.key === 'Escape'; // Функия проверки нажатия escape в обработчике события
 
-export {getRandomInteger, getRandomArrayElement, isEscapeKey};
+const debounce = (callback, timeoutDelay = 500) => {
+  let timeoutId;
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+};
+
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
+
+export {getRandomArrayElement, shuffleArray, isEscapeKey, debounce};
 
 
