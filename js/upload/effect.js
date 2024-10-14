@@ -1,63 +1,4 @@
-const EFFECTS = {
-  chrome: {
-    filter: 'grayscale',
-    range: {
-      min: 0,
-      max: 1,
-    },
-    start: 1,
-    step: 0.1,
-    unit: '',
-  },
-  sepia: {
-    filter: 'sepia',
-    range: {
-      min: 0,
-      max: 1,
-    },
-    start: 1,
-    step: 0.1,
-    unit: '',
-  },
-  marvin: {
-    filter: 'invert',
-    range: {
-      min: 0,
-      max: 100,
-    },
-    start: 100,
-    step: 1,
-    unit: '%',
-  },
-  phobos: {
-    filter: 'blur',
-    range: {
-      min: 0,
-      max: 3,
-    },
-    start: 3,
-    step: 0.1,
-    unit: 'px',
-  },
-  heat: {
-    filter: 'brightness',
-    range: {
-      min: 0,
-      max: 3,
-    },
-    start: 3,
-    step: 0.1,
-    unit: '',
-  },
-  default: {
-    range: {
-      min: 0,
-      max: 100,
-    },
-    start: 100,
-    step: 1,
-  },
-};
+import { EFFECTS } from '../constants/constants.js';
 
 const previewPhoto = document.querySelector('.img-upload__preview img');
 const sliderContainer = document.querySelector('.img-upload__effect-level');
@@ -68,19 +9,12 @@ const setSliderEffect = (value) => EFFECTS[value] || EFFECTS.default;
 
 const setSliderStatus = (effect) => sliderContainer.classList.toggle('hidden', effect === EFFECTS.default);
 
-const setSliderValue = (effect, value) => {
-  if (effect === EFFECTS.default) {
-    previewPhoto.style.filter = null;
-    return;
-  }
-  previewPhoto.style.filter = `${effect.filter}(${value}${effect.unit})`;
-};
-
 const updateSlider = (effect) => {
   slider.noUiSlider.off();
   slider.noUiSlider.on('update', () => {
-    sliderInput.value = slider.noUiSlider.get();
-    setSliderValue(effect, sliderInput.value);
+    sliderInput.value = +slider.noUiSlider.get();
+    previewPhoto.style.filter = (effect === EFFECTS.default)
+      ? null : `${effect.filter}(${sliderInput.value}${effect.unit})`;
   });
 };
 
