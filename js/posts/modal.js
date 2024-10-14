@@ -1,13 +1,13 @@
 import { isEscapeKey } from '../utils/utils.js';
 
-const picturesList = document.querySelector('.pictures'); // Блок, куда всталяются миниатюры
-const bigPictureContainer = document.querySelector('.big-picture'); // контейнер модального окна
-const bigPictureCancelButton = bigPictureContainer.querySelector('.big-picture__cancel'); // кнопка закрытия модального окна
-const commentsCaption = bigPictureContainer.querySelector('.social__caption'); // Описание картинки
-const bigPictureImg = bigPictureContainer.querySelector('.big-picture__img').querySelector('img'); // изображение модального окна
-const likesCount = bigPictureContainer.querySelector('.likes-count'); // указыавется количество лайков
-const socialComments = bigPictureContainer.querySelector('.social__comments'); // блок, внутри которого содержатся все комментарии (ul)
-const socialCommentTemplate = socialComments.querySelector('.social__comment'); // блок, в котором содержится один комментарий (li)
+const picturesList = document.querySelector('.pictures');
+const bigPictureContainer = document.querySelector('.big-picture');
+const bigPictureCancelButton = bigPictureContainer.querySelector('.big-picture__cancel');
+const commentsCaption = bigPictureContainer.querySelector('.social__caption');
+const bigPictureImg = bigPictureContainer.querySelector('.big-picture__img').querySelector('img');
+const likesCount = bigPictureContainer.querySelector('.likes-count');
+const socialComments = bigPictureContainer.querySelector('.social__comments');
+const socialCommentTemplate = socialComments.querySelector('.social__comment');
 const commentsTotalCount = document.querySelector('.social__comment-total-count');
 const commentsShownCount = document.querySelector('.social__comment-shown-count');
 const commentsLoaderButton = document.querySelector('.comments-loader');
