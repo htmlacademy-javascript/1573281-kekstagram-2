@@ -27,7 +27,7 @@ const isRightHashtags = (value) => createHashtags(value).every((hashtag) => HASH
 
 const isMaxCountHashtags = (value) => createHashtags(value).length <= HASHTAGS_MAX_COUNT;
 
-const isValidCaption = (value) => value.length <= CAPTION_MAX_LENGTH;
+const isValidCaption = (value) => value.length < CAPTION_MAX_LENGTH;
 
 const setPristine = () => {
   pristine.addValidator(
