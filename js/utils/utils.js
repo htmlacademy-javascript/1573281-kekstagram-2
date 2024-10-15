@@ -11,12 +11,12 @@ const debounce = (callback, timeoutDelay = RENDER_DELAY) => {
   };
 };
 
-const shuffleArray = (array) => {
-  for (let i = array.length - 1; i > 0; i--) {
+const shuffleArray = (items) => {
+  for (let i = items.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+    [items[i], items[j]] = [items[j], items[i]];
   }
-  return array;
+  return items;
 };
 
 export {shuffleArray, isEscapeKey, debounce};
