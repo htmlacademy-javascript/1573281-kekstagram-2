@@ -1,5 +1,7 @@
 import { isEscapeKey } from '../utils/utils.js';
 
+const COMMENTS_STEP = 5;
+
 const picturesList = document.querySelector('.pictures');
 const bigPictureContainer = document.querySelector('.big-picture');
 const bigPictureCancelButton = bigPictureContainer.querySelector('.big-picture__cancel');
@@ -12,8 +14,6 @@ const commentsTotalCount = document.querySelector('.social__comment-total-count'
 const commentsShownCount = document.querySelector('.social__comment-shown-count');
 const commentsLoaderButton = document.querySelector('.comments-loader');
 
-const COMMENTS_STEP = 5;
-
 let localComments;
 let renderedComments = 0;
 let totalComments;
@@ -21,15 +21,15 @@ let totalComments;
 const closeBigPicture = () => {
   bigPictureContainer.classList.add('hidden');
   document.body.classList.remove('modal-open');
-  bigPictureCancelButton.removeEventListener('click', onBigPictureCancelClick);
-  document.removeEventListener('keydown', onEscKeyDown);
+  bigPictureCancelButton.removeEventListener('click', modalCloseButtonClickHandler);
+  document.removeEventListener('keydown', documentKeydownHandler);
 };
 
-function onBigPictureCancelClick() {
+function modalCloseButtonClickHandler() {
   closeBigPicture();
 }
 
-function onEscKeyDown() {
+function documentKeydownHandler() {
   if (isEscapeKey) {
     closeBigPicture();
   }
@@ -86,8 +86,8 @@ const openBigPicture = (currentPhoto) => {
   totalComments = localComments.length;
   commentsTotalCount.textContent = totalComments;
   renderModal(currentPhoto);
-  bigPictureCancelButton.addEventListener('click', onBigPictureCancelClick);
-  document.addEventListener('keydown', onEscKeyDown);
+  bigPictureCancelButton.addEventListener('click', modalCloseButtonClickHandler);
+  document.addEventListener('keydown', documentKeydownHandler);
 };
 
 commentsLoaderButton.addEventListener('click', () => {
